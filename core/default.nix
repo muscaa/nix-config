@@ -3,14 +3,14 @@ let
   # utils
   feature = name:
     let
-      dir = ./features + "/${name}";
+      dir = ../features + "/${name}";
     in
     assert builtins.pathExists (dir + "/default.nix") || throw "rig: no such feature: ${name}";
     dir;
 
   host = name:
     let
-      dir = ./hosts + "/${name}";
+      dir = ../hosts + "/${name}";
     in
     assert builtins.pathExists (dir + "/default.nix") || throw "rig: no such host: ${name}";
     dir;
@@ -36,7 +36,7 @@ let
       })
     ) names;
 
-  hosts = lib.filterAttrs (_: value: value == "directory") (builtins.readDir ./hosts);
+  hosts = lib.filterAttrs (_: value: value == "directory") (builtins.readDir ../hosts);
 
   linksFor = { user, group, srcBase, destBase }:
     let
