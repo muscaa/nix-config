@@ -1,12 +1,13 @@
 {
   inputs = {
+    # nix
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
 
+    # system
     mt7927.url = "github:cmspam/mt7927-nixos";
-
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # apps
     spicetify-nix = {
         url = "github:Gerg-L/spicetify-nix";
         inputs.nixpkgs.follows = "nixpkgs";
