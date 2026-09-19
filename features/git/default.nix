@@ -4,6 +4,7 @@
     gh
     gnupg
     nixfmt
+    nixd
   ];
 
   programs = {
