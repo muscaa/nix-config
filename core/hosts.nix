@@ -2,13 +2,14 @@
 let
   utils = import ./utils.nix { inherit lib; };
   features = utils.features;
+  paths = import ./paths.nix;
 
   # makes a nixos configuration
   mkNixos =
     name:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs features name;
+        inherit inputs name features paths;
       };
       modules = [
         (inputs.import-tree ./modules)
@@ -21,7 +22,7 @@ let
   #   name:
   #   inputs.nix-darwin.lib.darwinSystem {
   #     specialArgs = {
-  #       inherit inputs features name;
+  #       inherit inputs name features paths;
   #     };
   #     modules = [
   #       (inputs.import-tree ./modules)

@@ -1,10 +1,13 @@
 { lib }:
+let
+  paths = import ./paths.nix;
+in
 rec {
   # returns a feature module file
   getFeature =
     name:
     let
-      dir = ../features + "/${name}";
+      dir = paths.features + "/${name}";
     in
     assert builtins.pathExists (dir + "/default.nix") || throw "rig: no such feature: ${name}";
     dir;
@@ -13,7 +16,7 @@ rec {
   getHost =
     name:
     let
-      dir = ../hosts + "/${name}";
+      dir = paths.hosts + "/${name}";
     in
     assert builtins.pathExists (dir + "/default.nix") || throw "rig: no such host: ${name}";
     dir;
