@@ -23,6 +23,7 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
 
+    mkdir -p $out/lib/rig
     cp -r ./. $out/lib/rig/
     mkdir -p $out/lib/features
     touch $out/lib/features/__init__.py
