@@ -12,7 +12,7 @@ def command(fn=None, *, name=None):
     return deco(fn) if fn is not None else deco
 
 def load_features():
-    from . import features
+    import features
     found = {}
     for info in pkgutil.iter_modules(features.__path__):
         found[info.name] = importlib.import_module(f"{features.__name__}.{info.name}")

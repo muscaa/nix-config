@@ -23,18 +23,18 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/lib/rig/features
     cp -r ./. $out/lib/rig/
-    touch $out/lib/rig/features/__init__.py
+    mkdir -p $out/lib/features
+    touch $out/lib/features/__init__.py
 
     ${lib.concatLines (
       lib.mapAttrsToList (name: src: ''
-        cp -r ${src} $out/lib/rig/features/${name}
+        cp -r ${src} $out/lib/features/${name}
       '') features
     )}
 
-    chmod -R u+w $out/lib/rig
-    ${pythonEnv}/bin/python3 -m compileall -q $out/lib/rig || true
+    chmod -R u+w $out/lib
+    ${pythonEnv}/bin/python3 -m compileall -q $out/lib || true
 
     makeWrapper ${pythonEnv}/bin/python3 $out/bin/rig \
       --add-flags "-m rig" \
