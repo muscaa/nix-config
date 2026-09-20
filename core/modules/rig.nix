@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   pkgs,
   paths,
   ...
@@ -13,11 +14,12 @@ let
       fileset = lib.fileset.fileFilter (f: f.hasExt "py") src;
     };
 
-  dirsIn = root: lib.attrNames (lib.filterAttrs (_: t: t == "directory") (builtins.readDir root));
+  # dirsIn = root: lib.attrNames (lib.filterAttrs (_: t: t == "directory") (builtins.readDir root));
 
   hasPython = name: builtins.pathExists (paths.features + "/${name}/__init__.py");
 
-  enabled = lib.filter (name: hasPython name) (dirsIn paths.features);
+  # enabled = lib.filter (name: hasPython name) (dirsIn paths.features);
+  enabled = lib.filter hasPython (lib.unique config.rig.internal.features);
 
   rig = pkgs.callPackage (paths.pkgs + "/rig") {
     features = lib.genAttrs enabled (name: extract (paths.features + "/${name}"));

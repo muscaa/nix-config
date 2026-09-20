@@ -25,6 +25,21 @@
       type = lib.types.addCheck lib.types.nonEmptyStr (lib.hasPrefix "/");
       description = "Absolute path to this repo on the live filesystem.";
     };
+
+    # internal use
+    internal = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          features = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [ ];
+            description = "Feature names imported on this host.";
+          };
+        };
+      };
+      default = {};
+      description = "Internal rig options.";
+    };
   };
 
   config = {

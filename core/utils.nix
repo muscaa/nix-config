@@ -50,7 +50,8 @@ rec {
   # maps feature names to feature modules
   features =
     names:
-    map (
+    [ { rig.internal.features = names; } ]
+    ++ map (
       name:
       {
         config,
