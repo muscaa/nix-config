@@ -19,7 +19,7 @@ let
 
   enabled = lib.filter (name: hasPython name) (dirsIn paths.features);
 
-  rig = pkgs.callPackage (paths.pkgs "/rig") {
+  rig = pkgs.callPackage (paths.pkgs + "/rig") {
     features = lib.genAttrs enabled (name: extract (paths.features + "/${name}"));
   };
 in
