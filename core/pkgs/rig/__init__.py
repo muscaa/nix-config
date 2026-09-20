@@ -23,24 +23,30 @@ def argument(*a, **kw):
         return f
     return deco
 
-def command(fn=None, *, name=None, group=None, help=None):
+def command(fn=None, *, name=None, group=None, help=None, root=False):
     """Register a subcommand.
 
-    group: dotted path ("media.scan"), a parent command function,
-           or None for the feature name. Pass group="" for top level.
+    root: attach to the group node itself instead of adding a level,
+          so `rig media` runs this.
     """
     def deco(f):
         if group is None:
             mod = f.__module__
             parts = (mod.split(".")[1],) if mod.startswith("features.") else ()
         elif callable(group):
-            parts = getattr(group, "_rig_path")
+            parts = getattr(group, "_rig_args")
         elif group:
             parts = tuple(group.split("."))
         else:
             parts = ()
 
-        f._rig_path = parts + (name or f.__name__.replace("_", "-"),)
+        if root:
+            if not parts:
+                raise ValueError("root=True needs a group")
+            f._rig_path = parts
+        else:
+            f._rig_path = parts + (name or f.__name__.replace("_", "-"),)
+
         _COMMANDS.append({
             "path": f._rig_path,
             "fn": f,
