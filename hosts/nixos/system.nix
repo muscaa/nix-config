@@ -1,10 +1,35 @@
-{ config, pkgs, ... }: {
-  # Set your time zone.
+{ pkgs, inputs, ... }: {
+  imports = [
+    inputs.mt7927.nixosModules.default
+  ];
+
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "26.05";
+
+  # steam, spotify etc
+  nixpkgs.config.allowUnfree = true;
+
+  # extra hardware
+  hardware.enableRedistributableFirmware = true;
+  hardware.mediatek-mt7927 = {
+    enable = true;
+    enableWifi = true;
+    enableBluetooth = false;
+    disableAspm = true;
+  };
+
+  # boot options
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.supportedFilesystems = [ "ntfs" ];
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+
+  # time zone and locales
   time.timeZone = "Europe/Bucharest";
+  time.hardwareClockInLocalTime = true;
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "ro_RO.UTF-8";
     LC_IDENTIFICATION = "ro_RO.UTF-8";
@@ -17,17 +42,8 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."musca" = {
-    isNormalUser = true;
-    description = "musca";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
   };
 }
