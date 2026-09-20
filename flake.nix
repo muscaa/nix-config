@@ -1,7 +1,12 @@
 {
   inputs = {
-    # nix
+    # nixos
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # nix-darwin
+    # TODO
+
+    # nix
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
@@ -23,12 +28,18 @@
 
     # apps
     spicetify-nix = {
-        url = "github:Gerg-L/spicetify-nix";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-    imports = [ ./core ];
-  };
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake
+      {
+        inherit inputs;
+      }
+      {
+        imports = [ ./core ];
+      };
 }
