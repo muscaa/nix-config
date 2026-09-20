@@ -1,10 +1,8 @@
-from pathlib import Path
-
 from rig import command, argument
 
 @command(root=True)
 @argument("--stats", action="store_true")
-def media(args):
+def desktop(args):
     """Media library status."""
     print("library status", "(with stats)" if args.stats else "")
 
