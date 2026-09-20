@@ -24,34 +24,37 @@ def argument(*a, **kw):
     return deco
 
 def command(fn=None, *, name=None, group=None, help=None, root=False):
-    """Register a subcommand.
-
-    root: attach to the group node itself instead of adding a level,
-          so `rig media` runs this.
-    """
+    """Register a subcommand."""
     def deco(f):
         if group is None:
             mod = f.__module__
             parts = (mod.split(".")[1],) if mod.startswith("features.") else ()
         elif callable(group):
-            parts = getattr(group, "_rig_args")
-        elif group:
+            parent = getattr(group, "_rig_path", None)
+            if parent is None:
+                raise TypeError(
+                    f"{f.__qualname__}: group={group.__qualname__} is not a "
+                    "registered command (missing @command, or decorator order "
+                    "is wrong — @command must be the topmost decorator)")
+            parts = tuple(parent)
+        elif isinstance(group, str) and group:
             parts = tuple(group.split("."))
-        else:
+        elif not group:
             parts = ()
-
-        if root:
-            if not parts:
-                raise ValueError("root=True needs a group")
-            f._rig_path = parts
         else:
-            f._rig_path = parts + (name or f.__name__.replace("_", "-"),)
+            raise TypeError(f"{f.__qualname__}: bad group {group!r}")
+
+        if root and not parts:
+            raise ValueError(f"{f.__qualname__}: root=True needs a group")
+
+        f._rig_path = parts if root else parts + (
+            name or f.__name__.replace("_", "-"),)
 
         _COMMANDS.append({
             "path": f._rig_path,
             "fn": f,
             "help": help or _first_line(f.__doc__),
-            "args": getattr(f, "_rig_args", []),
+            "args": tuple(getattr(f, "_rig_args", ())),
         })
         return f
     return deco(fn) if fn is not None else deco
