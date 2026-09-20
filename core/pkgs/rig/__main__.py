@@ -1,1 +1,4 @@
-print("hello world")
+import sys
+from . import main
+
+sys.exit(main())
