@@ -1,28 +1,25 @@
-{ features, ... }:
+{ pkgs, features, ... }:
 {
   imports = [
     ./hardware.nix
     ./system.nix
+    ./fixes.nix
   ]
   ++ features [
+    # system
+    "plymouth"
     "desktop"
+
+    # tools
+    "zsh"
+    "dev-tools"
+
     # apps
-    "kitty"
-    "nautilus"
-    "firefox"
-    "vscode"
-    "localsend"
     "discord"
+    "min-apps"
     "spotify"
     "steam"
-    "loupe"
-    # tools
-    "git"
-    "ssh"
-    "fastfetch"
-    "python3"
-    "nodejs"
-    "gcc"
+    "sunshine"
   ];
 
   rig.system = "x86_64-linux";
@@ -31,6 +28,7 @@
   rig.path = "/home/musca/.config/nixos";
 
   # users
+  users.defaultUserShell = pkgs.zsh;
   users.users."musca" = {
     isNormalUser = true;
     description = "musca";

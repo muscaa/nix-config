@@ -1,4 +1,9 @@
-{ pkgs, inputs, dir, links, ... }:
+{
+  pkgs,
+  dir,
+  links,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [
     vesktop

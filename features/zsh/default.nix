@@ -1,9 +1,5 @@
-{ pkgs, inputs, dir, links, lib, ... }:
+{ lib, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    kitty
-  ];
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -33,13 +29,5 @@
     interactiveShellInit = lib.mkBefore ''
       mkdir -p "$HOME/.local/state/zsh" "$HOME/.cache/zsh"
     '';
-  };
-
-  users = {
-    defaultUserShell = pkgs.zsh;
-  };
-
-  systemd.tmpfiles.rules = links {
-    ".config/kitty" = dir;
   };
 }

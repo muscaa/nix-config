@@ -1,8 +1,4 @@
-{ pkgs, inputs, ... }: {
-  imports = [
-    inputs.mt7927.nixosModules.default
-  ];
-
+{ pkgs, ... }: {
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05";
 
@@ -11,12 +7,6 @@
 
   # extra hardware
   hardware.enableRedistributableFirmware = true;
-  hardware.mediatek-mt7927 = {
-    enable = true;
-    enableWifi = true;
-    enableBluetooth = false;
-    disableAspm = true;
-  };
 
   # boot options
   boot.loader.efi.canTouchEfiVariables = true;
