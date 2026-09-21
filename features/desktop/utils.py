@@ -2,6 +2,8 @@ import os
 import subprocess
 from collections.abc import Mapping, Sequence
 from pathlib import Path
+from typing import Literal
+import json
 
 type StrPath = str | os.PathLike[str]
 
@@ -31,3 +33,17 @@ def spawn(cmd: Sequence[StrPath], cwd: StrPath | None = None, env: Mapping[str, 
             out.close()
 
     return p.pid
+
+def notify(title: str, body: str = "", app: str = "", icon: str = "bell", urgency: Literal["low", "normal", "critical"] = "normal", timeout: float = 5):
+    notification = {
+        "app_name": app,
+        "summary": title,
+        "body": body,
+        "urgency": urgency,
+        "timeout_ms": timeout * 1000,
+        "icon": icon,
+    }
+
+    subprocess.run(
+        ["noctalia", "msg", "notification-show", json.dumps(notification)],
+    )
