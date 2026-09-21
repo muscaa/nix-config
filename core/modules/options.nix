@@ -37,7 +37,7 @@
           };
         };
       };
-      default = {};
+      default = { };
       description = "Internal rig options.";
     };
   };
@@ -53,8 +53,6 @@
         message = "rig.user is \"${config.rig.user}\" but no such user is defined.";
       }
     ];
-
-    nixpkgs.hostPlatform = config.rig.system;
 
     system.activationScripts.rigPath.text = ''
       [ -d "${config.rig.path}" ] \

@@ -25,4 +25,13 @@ let
 in
 {
   environment.systemPackages = [ rig ];
+
+  environment.sessionVariables = with config.rig; {
+    RIG_SYSTEM = system;
+    RIG_USER = user;
+    RIG_GROUP = group;
+    RIG_PATH = path;
+    # internals
+    RIG_INTERNAL_FEATURES = internal.features;
+  };
 }
