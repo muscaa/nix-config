@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  dir,
-  links,
-  ...
-}:
+{ pkgs, lib, ... }:
 let
   iconTheme = "WhiteSur-dark";
   cursorTheme = "musca";
@@ -107,12 +101,5 @@ in
       gtk-cursor-theme-name=${cursorTheme}
       gtk-cursor-theme-size=${toString cursorSize}
     '';
-  };
-
-  systemd.tmpfiles.rules = links {
-    ".config/gtk-3.0" = "${dir}/gtk-3.0";
-    ".config/gtk-4.0" = "${dir}/gtk-4.0";
-    ".config/qt5ct" = "${dir}/qt5ct";
-    ".config/qt6ct" = "${dir}/qt6ct";
   };
 }

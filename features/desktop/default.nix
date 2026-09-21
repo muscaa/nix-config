@@ -57,5 +57,11 @@
   systemd.tmpfiles.rules = links {
     ".config/umbriel" = "${dir}/umbriel";
     ".config/noctalia" = "${dir}/noctalia";
+
+    # for themes, cant be set in ./theme.nix
+    ".config/gtk-3.0" = "${dir}/gtk-3.0";
+    ".config/gtk-4.0" = "${dir}/gtk-4.0";
+    ".config/qt5ct" = "${dir}/qt5ct";
+    ".config/qt6ct" = "${dir}/qt6ct";
   };
 }
