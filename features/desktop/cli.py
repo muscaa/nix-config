@@ -3,7 +3,7 @@ import typer
 
 from features.desktop import events as e
 
-desktop = typer.Typer()
+desktop = typer.Typer(name="desktop")
 
 Event = Literal[
     "umbriel_start",

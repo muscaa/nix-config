@@ -4,4 +4,4 @@ from rig import cli
 def main():
     features.load()
 
-    return cli.rig()
+    return cli.rig(prog_name="rig")
