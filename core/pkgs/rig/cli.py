@@ -33,3 +33,10 @@ def profiles():
         text=True,
     )
     print(result.stdout)
+
+@nix.command()
+def gc():
+    subprocess.run(
+        ["sudo", "nix-collect-garbage", "-d"],
+        check=True,
+    )
