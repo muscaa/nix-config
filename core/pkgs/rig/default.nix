@@ -6,7 +6,11 @@
   features ? { },
 }:
 let
-  pythonEnv = python3.withPackages (ps: [ ]);
+  pythonEnv = python3.withPackages (
+    ps: with ps; [
+      typer
+    ]
+  );
 in
 stdenvNoCC.mkDerivation {
   pname = "rig";

@@ -1,19 +1,5 @@
-from rig import command, argument
+from rig.cli import rig
 
-@command(root=True)
-@argument("--stats", action="store_true")
-def desktop(args):
-    """Media library status."""
-    print("library status", "(with stats)" if args.stats else "")
+from features.desktop import cli
 
-@command
-@argument("--depth", type=int, default=3)
-def scan(args):
-    """Rescan the media library."""
-    print("scanning, depth", args.depth)
-
-@command(group=scan)
-@argument("--force", action="store_true")
-def cache(args):
-    """Rebuild the scan cache."""
-    print("rebuilding cache")
+rig.add_typer(cli.desktop, name="desktop")
