@@ -13,6 +13,7 @@
     # tools
     "zsh"
     "dev-tools"
+    "docker"
 
     # apps
     "discord"
