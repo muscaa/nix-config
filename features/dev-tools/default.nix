@@ -20,6 +20,9 @@
     # c/c++
     gcc
 
+    # c#
+    dotnet-sdk_10
+
     # git/github
     gh
     gnupg
