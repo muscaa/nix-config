@@ -27,6 +27,9 @@
     gh
     gnupg
 
+    # ai shit
+    claude-code
+
     # other
     fastfetch
   ];
