@@ -14,6 +14,7 @@
     "zsh"
     "dev-tools"
     "docker"
+    "playwright"
 
     # apps
     "discord"
