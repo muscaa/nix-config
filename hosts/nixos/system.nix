@@ -7,6 +7,11 @@
 
   # extra hardware
   hardware.enableRedistributableFirmware = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  hardware.amdgpu.opencl.enable = true;
 
   # boot options
   boot.loader.efi.canTouchEfiVariables = true;
