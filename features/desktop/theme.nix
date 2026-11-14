@@ -44,6 +44,7 @@ let
     [Icon Theme]
     Name=default
     Comment=Default cursor theme
+    Inherits=${cursorTheme}
     EOF
 
     cat > "$default/cursor.theme" <<EOF
@@ -65,6 +66,7 @@ in
   environment.sessionVariables = {
     XCURSOR_THEME = cursorTheme;
     XCURSOR_SIZE = toString cursorSize;
+    XCURSOR_PATH = [ "${cursors}/share/icons" ];
   };
 
   # noctalia greeter cursor
