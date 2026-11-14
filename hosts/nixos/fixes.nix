@@ -6,12 +6,15 @@
 
   # fix boot hang due to partially supported bluetooth driver
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   hardware.mediatek-mt7927 = {
     enable = true;
     enableWifi = true;
     enableBluetooth = true;
     disableAspm = true;
   };
+
+  services.blueman.enable = true;
 
   # fix mouse scroll not working in games?
   environment.etc."libinput/local-overrides.quirks".text = ''

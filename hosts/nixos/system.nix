@@ -7,6 +7,7 @@
 
   # extra hardware
   hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
