@@ -35,6 +35,8 @@
     user = config.rig.user;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   # umbriel
   programs.umbriel.enable = true;
 
