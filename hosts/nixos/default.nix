@@ -51,7 +51,7 @@
         connection = {
           id = "wired";
           type = "ethernet";
-          interface-name = "enp112s0";
+          interface-name = "enp115s0";
           autoconnect = true;
         };
         ipv4 = {
