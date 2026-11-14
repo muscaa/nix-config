@@ -5,11 +5,11 @@
   ];
 
   # fix boot hang due to partially supported bluetooth driver
-  hardware.bluetooth.enable = false;
+  hardware.bluetooth.enable = true;
   hardware.mediatek-mt7927 = {
     enable = true;
     enableWifi = true;
-    enableBluetooth = false;
+    enableBluetooth = true;
     disableAspm = true;
   };
 
