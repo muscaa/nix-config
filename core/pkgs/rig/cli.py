@@ -17,12 +17,11 @@ def rebuild():
     )
 
 @nix.command()
-def upgrade():
+def update():
     subprocess.run(
         ["sudo", "nix", "flake", "update"],
         check=True,
     )
-    rebuild()
 
 @nix.command()
 def profiles():
