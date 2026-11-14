@@ -1,5 +1,5 @@
 [colors]
-background = "#17404fFF"
+background = "#12333fFF"
 text_primary = "#f2f3f3FF"
 text_muted = "#afb6b6FF"
 accent_primary = "#67d8e4FF"
@@ -18,6 +18,31 @@ outer = "#0e2630FF"
 background_tint = "#0e263088"
 badge = "#67d8e4FF"
 workspace_background = "#0e2630FF"
+
+[colors.tab_bar]
+background = "#12333fFF"
+text = "#afb6b6FF"
+active = "#67d8e4FF"
+active_text = "#182325FF"
+active_unfocused = "#12333fFF"
+active_unfocused_text = "#f2f3f3FF"
+urgent = "#fd4663FF"
+urgent_text = "#182325FF"
+
+[colors.title_bar]
+background = "#12333fFF"
+background_unfocused = "#0e2630FF"
+text = "#f2f3f3FF"
+text_unfocused = "#afb6b6FF"
+close = "#fd4663FF"
+close_glyph = "#182325FF"
+close_glyph_hover = "#182325FF"
+maximize = "#67d8e4FF"
+maximize_glyph = "#182325FF"
+maximize_glyph_hover = "#182325FF"
+minimize = "#5c8cd6FF"
+minimize_glyph = "#182325FF"
+minimize_glyph_hover = "#182325FF"
 
 [[window_rule]]
 match.is_scratchpad = true

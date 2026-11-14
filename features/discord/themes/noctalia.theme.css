@@ -86,11 +86,11 @@ body {
 
   /* background and dark colors */
   --bg-1: #071318; /* dark buttons when clicked */
-  --bg-2: #0b2028; /* dark buttons */
-  --bg-3: #17404f; /* spacing, secondary elements */
+  --bg-2: #102d37; /* dark buttons */
+  --bg-3: #12333f; /* spacing, secondary elements */
   --bg-4: #0e2630; /* main background color */
   --hover: #f2f3f315; /* channels and buttons when hovered */
-  --active: #194657; /* channels and buttons when clicked or selected */
+  --active: #1b4d5f; /* channels and buttons when clicked or selected */
   --active-2: #0e2630; /* extra state for transparent buttons */
   --message-hover: #12333f40; /* messages when hovered */
 

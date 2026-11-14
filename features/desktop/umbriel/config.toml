@@ -253,7 +253,7 @@ hide_when_typing = false                        # Keep visible while typing
 hide_timeout_ms = 0                             # Idle hide timeout, 0 disables; maximum is 3600000
 
 [input.focus]
-follows_mouse = true                           # Focus the pointer target after pointer motion
+follows_mouse = "always" # "off", "sloppy", or "always"; always also refocuses after layout and workspace changes.
 # Refuse hover focus when revealing a window would scroll farther than this
 # many viewport widths. Omit the key for no limit.
 # follows_mouse_max_scroll = 0.5
@@ -402,7 +402,7 @@ follows_mouse = true                           # Focus the pointer target after 
 
 
 
-"Mod" = "spawn:noctalia msg panel-toggle launcher"
+"Mod" = "spawn noctalia msg panel-toggle launcher"
 
 "Mod+Left" = "window-focus-left"
 "Mod+Down" = "window-focus-down"
@@ -419,24 +419,24 @@ follows_mouse = true                           # Focus the pointer target after 
 #"Mod+Shift+Minus" = "window-modify-height-down:-0.1"
 #"Mod+Shift+Equal" = "window-modify-height-down:0.1"
 
-"XF86AudioMute" = "spawn:noctalia msg volume-mute"
-"XF86AudioPlay" = "spawn:noctalia msg media toggle"
-"XF86AudioNext" = "spawn:noctalia msg media next"
-"XF86AudioPrev" = "spawn:noctalia msg media previous"
+"XF86AudioMute" = "spawn noctalia msg volume-mute"
+"XF86AudioPlay" = "spawn noctalia msg media toggle"
+"XF86AudioNext" = "spawn noctalia msg media next"
+"XF86AudioPrev" = "spawn noctalia msg media previous"
 
 "Mod+Tab" = { action = "overview-toggle", repeat = false }
-"Alt+Tab" = "spawn:noctalia msg window-switcher"
+"Alt+Tab" = "spawn noctalia msg window-switcher"
 "Mod+Q" = "window-close"
 "Mod+W" = "window-toggle-floating"
 "Mod+E" = "window-toggle-pinned"
 "Mod+D" = "window-toggle-maximize-to-edges"
 "Mod+F" = "window-toggle-fullscreen"
 
-"Mod+Print" = "spawn:noctalia msg screenshot-fullscreen"
-"Print" = "spawn:noctalia msg screenshot-region"
+"Mod+Print" = "spawn noctalia msg screenshot-fullscreen"
+"Print" = "spawn noctalia msg screenshot-region"
 
-"Mod+Z" = "spawn:kitty"
-"Mod+X" = "spawn:firefox"
+"Mod+Z" = "spawn kitty"
+"Mod+X" = "spawn firefox"
 
 
 
@@ -670,9 +670,9 @@ duration_ms = 250
 curve = "easeout"
 dim = 0.5                                       # Backdrop dim amount, 0.0-1.0
 blur = false                                    # Requires appearance.blur.enabled
-scale = 0.0                                     # 0 keeps geometry; 0.1-1.0 centers and scales
-maximize = false                                # Maximize to usable-area edges while shown
-fullscreen = false                              # Make the scratchpad window fullscreen while shown
+# scale = 0.0                                     # 0 keeps geometry; 0.1-1.0 centers and scales
+# maximize = false                                # Maximize to usable-area edges while shown
+# fullscreen = false                              # Make the scratchpad window fullscreen while shown
 
 # Focus border color
 [animation.border]
@@ -734,7 +734,7 @@ action = "overview-toggle"
 [hot_corners.bottom_right]
 enabled = false
 delay_ms = 500
-action = "spawn:notify-send 'Bottom right'"
+action = "spawn notify-send 'Bottom right'"
 
 # ─────────────────────── Security Context Rules ─────────────────────────────
 # Sandboxed clients receive a restricted Wayland global set. Grant extra
