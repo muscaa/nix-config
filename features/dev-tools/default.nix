@@ -54,6 +54,12 @@
     };
   };
 
+  # java
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk25;
+  };
+
   environment.sessionVariables = {
     NPM_CONFIG_PREFIX = "$HOME/.npm-global";
     PATH = [ "$HOME/.npm-global/bin" ];
