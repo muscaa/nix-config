@@ -34,7 +34,7 @@ autostart = ["noctalia", "rig desktop events umbriel_start"]                    
 xwayland = true                                 # Requires xwayland-satellite; restart to change
 show_cheatsheet = false                          # Show the keybind overlay on startup
 focus_on_activate = false                       # Do not let unsolicited requests steal focus
-honor_restored_maximize = false                 # Honor restored maximized state
+honor_restored_maximize = true                 # Honor restored maximized state
 
 # Session environment
 # Values apply only at session startup. Native sessions also publish them to
