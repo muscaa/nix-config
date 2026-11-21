@@ -23,6 +23,9 @@
     # c#
     dotnet-sdk_10
 
+    # go
+    go
+
     # git/github
     gh
     gnupg
