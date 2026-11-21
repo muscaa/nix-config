@@ -14,7 +14,6 @@
     # tools
     "zsh"
     "dev-tools"
-    "wine"
     "docker"
     "playwright"
 
