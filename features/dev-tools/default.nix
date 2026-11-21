@@ -63,6 +63,7 @@
   environment.sessionVariables = {
     NPM_CONFIG_PREFIX = "$HOME/.npm-global";
     PATH = [ "$HOME/.npm-global/bin" ];
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
   };
 
   systemd.tmpfiles.rules = links {

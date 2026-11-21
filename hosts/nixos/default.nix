@@ -9,6 +9,7 @@
     # system
     "plymouth"
     "desktop"
+    "nix-ld"
 
     # tools
     "zsh"
@@ -38,6 +39,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout"
     ];
   };
 
