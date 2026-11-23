@@ -65,8 +65,11 @@
 
   environment.sessionVariables = {
     NPM_CONFIG_PREFIX = "$HOME/.npm-global";
-    PATH = [ "$HOME/.npm-global/bin" ];
     DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
+    PATH = [
+      "$HOME/.npm-global/bin"
+      "$HOME/Projects/nider-toolkit/bin"
+    ];
   };
 
   systemd.tmpfiles.rules = links {
